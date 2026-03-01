@@ -141,14 +141,14 @@ func _ready() -> void:
 	_h_scroll = HScrollBar.new()
 	_h_scroll.name = "HScrollBar"
 	_h_scroll.set_anchors_and_offsets_preset(PRESET_BOTTOM_WIDE)
-	_h_scroll.offset_top = -12
+	_h_scroll.offset_top = -8 * get_theme_default_base_scale()
 	_h_scroll.value_changed.connect(_on_h_scroll_changed)
 
 	_v_scroll = VScrollBar.new()
 	_v_scroll.name = "VScrollBar"
 	_v_scroll.set_anchors_and_offsets_preset(PRESET_RIGHT_WIDE)
 	_v_scroll.offset_top = header_height
-	_v_scroll.offset_left = -12
+	_v_scroll.offset_left = -8 * get_theme_default_base_scale()
 	_v_scroll.value_changed.connect(_on_v_scroll_value_changed)
 
 	add_child(_h_scroll)
