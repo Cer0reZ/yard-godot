@@ -206,9 +206,11 @@ func update_view() -> void:
 	entries_data.clear()
 	for uid in current_registry.get_all_uids():
 		var entry_data := [current_registry.get_string_id(uid), uid]
-		if not RegistryIO.is_uid_valid(uid):
+		if RegistryIO.is_uid_valid(uid):
+			entry_data.append_array(get_res_row_data(current_registry.load_entry(uid)))
+		else:
 			entry_data[UID_COLUMN] = "(!) " + uid
-		entry_data.append_array(get_res_row_data(resources.get(uid, null)))
+			entry_data.append_array(get_res_row_data(null))
 		entries_data.append(entry_data)
 
 	dynamic_table.set_columns(_build_columns())
